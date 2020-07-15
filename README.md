@@ -1,15 +1,17 @@
 # crew-analytics-csv
 CSV upload module for CrewAnalytics
 
-DB setup:
+### DB setup:
 Mysql with crew_analytics DB
+- Run csv-db.sql script.
+> mysql> source /Users/a-9288/Downloads/csv-db.sql
 
-<li>To run:
-<li>mvn spring-boot:run
+### To run:
+- mvn spring-boot:run
 
-REST endpoints:
-<li>For CSV upload
-<li>POST: http://localhost:8080/api/csv/upload
+### REST endpoints:
+1. For CSV upload
+- POST: http://localhost:8080/api/csv/upload
 
-To see all table values
-<li>GET: http://localhost:8080/api/csv/crews
+2. To see all table values
+- GET: http://localhost:8080/api/csv/crews
