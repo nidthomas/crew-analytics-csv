@@ -6,55 +6,52 @@ import javax.persistence.*;
 @Table
 public class Crew {
 
-//    @GeneratedValue
-//    @Column
-//    private int Id;
+    @EmbeddedId
+    private CrewId Id;
 
-    @Column
-    private float Crew_Utilized;
-
-    @Column
-    private int Planned;
-
-    @Column
-    private String Crew_Rank;
-
-    @Id
     @Column
     private String Base_Station;
+
+    @Column
+    private String Fleet;
+
+    @Column
+    private int Planned_home_standby;
+
+    @Column
+    private int Planned_airport_standby;
+
+    @Column
+    private int Utilized_home_standby;
+
+    @Column
+    private int Utilized_airport_standby;
+
+    @Column
+    private int Departures;
 
     public Crew() {
     }
 
-    public Crew(float crew_utilized, int planned, String rank, String base_Station) {
-        this.Crew_Utilized = crew_utilized;
-        this.Planned = planned;
-        this.Crew_Rank = rank;
-        this.Base_Station = base_Station;
+    public Crew(CrewId id,String base_Station, String fleet, int planned_home_standby, int planned_airport_standby,
+                int utilized_home_standby, int utilized_airport_standby, int departures) {
+        Id = id;
+        Base_Station = base_Station;
+        Fleet = fleet;
+        Planned_home_standby = planned_home_standby;
+        Planned_airport_standby = planned_airport_standby;
+        Utilized_home_standby = utilized_home_standby;
+        Utilized_airport_standby = utilized_airport_standby;
+        Departures = departures;
     }
 
-    public float getCrew_utilized() {
-        return Crew_Utilized;
+
+    public CrewId getId() {
+        return Id;
     }
 
-    public void setCrew_utilized(float crew_utilized) {
-        Crew_Utilized = crew_utilized;
-    }
-
-    public int getPlanned() {
-        return Planned;
-    }
-
-    public void setPlanned(int planned) {
-        Planned = planned;
-    }
-
-    public String getRank() {
-        return Crew_Rank;
-    }
-
-    public void setRank(String rank) {
-        Crew_Rank = rank;
+    public void setId(CrewId id) {
+        Id = id;
     }
 
     public String getBase_Station() {
@@ -65,13 +62,51 @@ public class Crew {
         Base_Station = base_Station;
     }
 
-    @Override
-    public String toString() {
-        return "Crew{" +
-                "Crew_utilized=" + Crew_Utilized +
-                ", Planned=" + Planned +
-                ", Rank='" + Crew_Rank + '\'' +
-                ", Base_Station='" + Base_Station + '\'' +
-                '}';
+    public String getFleet() {
+        return Fleet;
+    }
+
+    public void setFleet(String fleet) {
+        Fleet = fleet;
+    }
+
+    public int getPlanned_home_standby() {
+        return Planned_home_standby;
+    }
+
+    public void setPlanned_home_standby(int planned_home_standby) {
+        Planned_home_standby = planned_home_standby;
+    }
+
+    public int getPlanned_airport_standby() {
+        return Planned_airport_standby;
+    }
+
+    public void setPlanned_airport_standby(int planned_airport_standby) {
+        Planned_airport_standby = planned_airport_standby;
+    }
+
+    public int getUtilized_home_standby() {
+        return Utilized_home_standby;
+    }
+
+    public void setUtilized_home_standby(int utilized_home_standby) {
+        Utilized_home_standby = utilized_home_standby;
+    }
+
+    public int getUtilized_airport_standby() {
+        return Utilized_airport_standby;
+    }
+
+    public void setUtilized_airport_standby(int utilized_airport_standby) {
+        Utilized_airport_standby = utilized_airport_standby;
+    }
+
+    public int getDepartures() {
+        return Departures;
+    }
+
+    public void setDepartures(int departures) {
+        Departures = departures;
     }
 }
