@@ -25,6 +25,7 @@ public class CSVController {
     @Autowired
     CSVService fileService;
 
+    @CrossOrigin
     @PostMapping("/upload")
     public ResponseEntity<ResponseMessage> uploadCSV(@RequestParam("file")MultipartFile file){
 
@@ -48,6 +49,7 @@ public class CSVController {
         return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(message));
     }
 
+    @CrossOrigin
     @GetMapping("/crews")
     public ResponseEntity<List<Crew>> getAllCrew(){
 
@@ -63,6 +65,7 @@ public class CSVController {
         }
     }
 
+    @CrossOrigin
     @DeleteMapping("/reset")
     public ResponseEntity<ResponseMessage> deleteAll(){
 
