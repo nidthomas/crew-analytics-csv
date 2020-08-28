@@ -1,6 +1,7 @@
 package com.crewanalytics.csv.upload.helper;
 
 import com.crewanalytics.csv.upload.model.Crew;
+import com.crewanalytics.csv.upload.model.CrewId;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -11,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -38,12 +40,19 @@ public class CSVHelper {
             Iterable<CSVRecord> csvRecords = csvParser.getRecords();
 
             for (CSVRecord csvRecord : csvRecords){
+//                System.out.println("csvToCrewDb");
+//                System.out.println(csvRecords);
+
+                // TODO change with params
                 Crew crew = new Crew(
-                        Float.parseFloat(csvRecord.get("Crew_Utilized")),
-                        // TODO Planned
-                        Integer.parseInt(csvRecord.get("planned")),
-                        csvRecord.get("Crew_Rank"),
-                        csvRecord.get("Base_Station")
+                        new CrewId(new Date(csvRecord.get(0)),csvRecord.get("RANK")),
+                        csvRecord.get("BASE"),
+                        csvRecord.get("FLEET"),
+                        Integer.parseInt(csvRecord.get("Planned HSBstandby")),
+                        Integer.parseInt(csvRecord.get("Planned ASBY standby")),
+                        Integer.parseInt(csvRecord.get("UTILISEDSTNDBYHSBYCNT")),
+                        Integer.parseInt(csvRecord.get("UTILISEDSTNDBYASBYCNT")),
+                        Integer.parseInt(csvRecord.get("DEPARTURES"))
                 );
                 crews.add(crew);
             }

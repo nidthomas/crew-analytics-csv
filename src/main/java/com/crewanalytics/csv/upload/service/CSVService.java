@@ -5,6 +5,7 @@ import com.crewanalytics.csv.upload.model.Crew;
 import com.crewanalytics.csv.upload.repository.CrewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -27,6 +28,14 @@ public class CSVService {
     }
 
     public List<Crew> getAllCrew(){
+
         return repository.findAll();
+
+    }
+
+    public void deleteAll(){
+
+         repository.deleteAllInBatch();
+
     }
 }
